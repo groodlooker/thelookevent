@@ -63,87 +63,87 @@ view: order_items {
   dimension: order_id {
     type: number
     sql: ${TABLE}.order_id ;;
-    action: {
-      label: "Send this to slack channel"
-      url: "https://hooks.zapier.com/hooks/catch/1662138/tvc3zj/"
-      param: {
-        name: "user_dash_link"
-        value: "/dashboards/ayalascustomerlookupdb?Email={{ users.email._value}}"
-      }
-      form_param: {
-        name: "Message"
-        type: textarea
-        default: "Hey,
-        Could you check out order #{{value}}. It's saying its {{status._value}},
-        but the customer is reaching out to us about it.
-        ~{{ _user_attributes.first_name}}"
-      }
-      form_param: {
-        name: "Recipient"
-        type: select
-        default: "zevl"
-        option: {
-          name: "zevl"
-          label: "Zev"
-        }
-        option: {
-          name: "slackdemo"
-          label: "Slack Demo User"
-        }
-      }
-      form_param: {
-        name: "Channel"
-        type: select
-        default: "cs"
-        option: {
-          name: "cs"
-          label: "Customer Support"
-        }
-        option: {
-          name: "general"
-          label: "General"
-        }
-      }
-    }
-    action: {
-      label: "Create Order Form"
-      url: "https://hooks.zapier.com/hooks/catch/2813548/oosxkej/"
-      form_param: {
-        name: "Order ID"
-        type: string
-        default: "{{ order_id._value }}"
-      }
+    # action: {
+    #   label: "Send this to slack channel"
+    #   url: "https://hooks.zapier.com/hooks/catch/1662138/tvc3zj/"
+    #   param: {
+    #     name: "user_dash_link"
+    #     value: "/dashboards/ayalascustomerlookupdb?Email={{ users.email._value}}"
+    #   }
+    #   form_param: {
+    #     name: "Message"
+    #     type: textarea
+    #     default: "Hey,
+    #     Could you check out order #{{value}}. It's saying its {{status._value}},
+    #     but the customer is reaching out to us about it.
+    #     ~{{ _user_attributes.first_name}}"
+    #   }
+    #   form_param: {
+    #     name: "Recipient"
+    #     type: select
+    #     default: "zevl"
+    #     option: {
+    #       name: "zevl"
+    #       label: "Zev"
+    #     }
+    #     option: {
+    #       name: "slackdemo"
+    #       label: "Slack Demo User"
+    #     }
+    #   }
+    #   form_param: {
+    #     name: "Channel"
+    #     type: select
+    #     default: "cs"
+    #     option: {
+    #       name: "cs"
+    #       label: "Customer Support"
+    #     }
+    #     option: {
+    #       name: "general"
+    #       label: "General"
+    #     }
+    #   }
+    # }
+    # action: {
+    #   label: "Create Order Form"
+    #   url: "https://hooks.zapier.com/hooks/catch/2813548/oosxkej/"
+    #   form_param: {
+    #     name: "Order ID"
+    #     type: string
+    #     default: "{{ order_id._value }}"
+    #   }
 
-      form_param: {
-        name: "Name"
-        type: string
-        default: "{{ users.name._value }}"
-      }
+    #   form_param: {
+    #     name: "Name"
+    #     type: string
+    #     default: "{{ users.name._value }}"
+    #   }
 
-      form_param: {
-        name: "Email"
-        type: string
-        default: "{{ _user_attributes.email }}"
-      }
+    #   form_param: {
+    #     name: "Email"
+    #     type: string
+    #     default: "{{ _user_attributes.email }}"
+    #   }
 
-      form_param: {
-        name: "Item"
-        type: string
-        default: "{{ products.item_name._value }}"
-      }
+    #   form_param: {
+    #     name: "Item"
+    #     type: string
+    #     default: "{{ products.item_name._value }}"
+    #   }
 
-      form_param: {
-        name: "Price"
-        type: string
-        default: "{{ order_items.sale_price._rendered_value }}"
-      }
+    #   form_param: {
+    #     name: "Price"
+    #     type: string
+    #     default: "{{ order_items.sale_price._rendered_value }}"
+    #   }
 
-      form_param: {
-        name: "Comments"
-        type: string
-        default: " Hi {{ users.first_name._value }}, thanks for your business!"
-      }
-    }
+    #   form_param: {
+    #     name: "Comments"
+    #     type: string
+    #     default: " Hi {{ users.first_name._value }}, thanks for your business!"
+    #   }
+    # }
   }
 
   ########## Time Dimensions ##########

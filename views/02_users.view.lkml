@@ -64,32 +64,32 @@ view: users {
       url: "/dashboards/ayalascustomerlookupdb?Email={{ value | encode_uri }}"
       icon_url: "http://www.looker.com/favicon.ico"
     }
-    action: {
-      label: "Email Promotion to Customer"
-      url: "https://desolate-refuge-53336.herokuapp.com/posts"
-      icon_url: "https://sendgrid.com/favicon.ico"
-      param: {
-        name: "some_auth_code"
-        value: "abc123456"
-      }
-      form_param: {
-        name: "Subject"
-        required: yes
-        default: "Thank you {{ users.name._value }}"
-      }
-      form_param: {
-        name: "Body"
-        type: textarea
-        required: yes
-        default:
-        "Dear {{ users.first_name._value }},
+    # action: {
+    #   label: "Email Promotion to Customer"
+    #   url: "https://desolate-refuge-53336.herokuapp.com/posts"
+    #   icon_url: "https://sendgrid.com/favicon.ico"
+    #   param: {
+    #     name: "some_auth_code"
+    #     value: "abc123456"
+    #   }
+    #   form_param: {
+    #     name: "Subject"
+    #     required: yes
+    #     default: "Thank you {{ users.name._value }}"
+    #   }
+    #   form_param: {
+    #     name: "Body"
+    #     type: textarea
+    #     required: yes
+    #     default:
+    #     "Dear {{ users.first_name._value }},
 
-        Thanks for your loyalty to the Look.  We'd like to offer you a 10% discount
-        on your next purchase!  Just use the code LOYAL when checking out!
+    #     Thanks for your loyalty to the Look.  We'd like to offer you a 10% discount
+    #     on your next purchase!  Just use the code LOYAL when checking out!
 
-        Your friends at the Look"
-      }
-    }
+    #     Your friends at the Look"
+    #   }
+    # }
     required_fields: [name, first_name]
   }
 
@@ -191,9 +191,7 @@ view: users {
     label: "SSN Last 4"
     description: "Only users with sufficient permissions will see this data"
     type: string
-    sql: CASE WHEN '{{_user_attributes["can_see_sensitive_data"]}}' = 'Yes'
-                THEN ${ssn}
-                ELSE '####' END;;
+    sql: ${ssn};;
   }
 
   ## MEASURES ##
